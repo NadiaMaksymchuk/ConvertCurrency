@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiKey: '95b36f49fe4dff76f5b44c31',
+  apiKey: '/95b36f49fe4dff76f5b44c31/',
   apiUrl: ' https://v6.exchangerate-api.com/v6'
 };
 

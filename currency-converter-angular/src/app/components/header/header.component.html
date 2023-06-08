@@ -5,6 +5,14 @@
       alt="logo"
     />
     <p class="name">Convert Master</p>
+    <div class="currency">
+      <img alt="Image" class="origin" src="{{ getFlag('us') }}" />
+      <div>{{USDCurrency}}</div>
+      |
+      <img alt="Image" class="origin" src="{{ getFlag('eu') }}" />
+      <div>{{EURCurrency}}</div>
+    </div>
+    
   <div class="main-content">
     <router-outlet></router-outlet>
   </div>
