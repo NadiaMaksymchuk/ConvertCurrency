@@ -14,7 +14,8 @@ export class HeaderComponent implements OnInit {
 
   private readonly UAHString = 'UAH';
 
-  constructor(private currencyService: CurrencyService, private countriesService: CountriesTzLangProviderService) { }
+  constructor(private currencyService: CurrencyService,
+    private countriesService: CountriesTzLangProviderService) { }
 
   ngOnInit(): void {
     this.seedCurrency();
@@ -24,16 +25,16 @@ export class HeaderComponent implements OnInit {
   private seedCurrency() {
 
     this.currencyService.getLatestCurrency(CurrencyEnum.EUR)
-        .subscribe(response => 
+        .subscribe(response =>
           {
             this.EURCurrency = response.conversion_rates[this.UAHString];
           });
 
     this.currencyService.getLatestCurrency(CurrencyEnum.USD)
-        .subscribe(response => 
+        .subscribe(response =>
           {
             this.USDCurrency = response.conversion_rates[this.UAHString];
-          });  
+          });
   }
 
   getFlag(county: string): string | undefined {

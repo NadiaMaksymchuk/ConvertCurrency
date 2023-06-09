@@ -8,6 +8,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon'
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIconModule
   ],
   exports: [
     RouterModule,
@@ -32,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIconModule
   ],
   declarations: [],
 })

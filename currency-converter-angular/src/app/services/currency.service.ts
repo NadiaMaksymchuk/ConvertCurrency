@@ -11,16 +11,15 @@ export class CurrencyService {
   constructor(private httpService: HttpService) { }
   private readonly latestRequest = 'latest/';
 
-  public getLatestCurrency(currency: CurrencyEnum) {
-    
-    return this.httpService.get<IResponseData>(this.buildLatestUrl(currency)); 
+  public getLatestCurrency(currency: CurrencyEnum | string) {
+    return this.httpService.get<IResponseData>(this.buildLatestUrl(currency));
   }
 
   private buildLatestUrl(currency: string): string {
     return this.latestRequest + currency;
   }
 
-  public calculateCurrency(rate: number, summa: number) {
-
+  public calculateCurrencyTotalSumma(rate: number, summa: number) {
+    return rate * summa;
   }
 }
