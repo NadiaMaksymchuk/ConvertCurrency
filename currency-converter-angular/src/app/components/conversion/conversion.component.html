@@ -1,0 +1,36 @@
+<mat-card class="main">
+  <h3 class="title">Currency Converter</h3>
+  <div class="date"></div>
+  <div class="converter">
+    <mat-card class="input-data">
+      <div class="have-phase">I have</div>
+      <mat-form-field class="input">
+        <input matInput #input1 [(ngModel)]="inputSumma" (keydown)="calculateSumma($event)">
+      </mat-form-field>
+      <mat-form-field class="select">
+        <mat-select [(ngModel)]="inputCurrency" (selectionChange)="calculateSumma($event)">
+          <mat-option value="USD"><img alt="Image" class="origin" src="{{ getFlag('us') }}" /> USD</mat-option>
+          <mat-option value="EUR"><img alt="Image" class="origin" src="{{ getFlag('eu') }}" /> EUR</mat-option>
+          <mat-option value="UAH"><img alt="Image" class="origin" src="{{ getFlag('ua') }}" /> UAH</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="currency">1 {{inputCurrency}} = {{convertToOneValutaInput}} {{outputCurrency}}</div>
+    </mat-card>
+    <button class="exange-button" (click)="change()"><mat-icon>cached</mat-icon></button>
+    <mat-card class="output-data">
+      <div class="have-phase">I get</div>
+      <mat-form-field class="input">
+        <input matInput #input2 [(ngModel)]="outputSumma" (keydown)="calculateSummaFromOutPut($event)">
+      </mat-form-field>
+      <mat-form-field class="select">
+        <mat-select [(ngModel)]="outputCurrency" (selectionChange)="calculateSumma($event)">
+          <mat-option value="USD"><img alt="Image" class="origin" src="{{ getFlag('us') }}" /> USD</mat-option>
+          <mat-option value="EUR"><img alt="Image" class="origin" src="{{ getFlag('eu') }}" /> EUR</mat-option>
+          <mat-option value="UAH"><img alt="Image" class="origin" src="{{ getFlag('ua') }}" /> UAH</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="currency">1 {{outputCurrency}} = {{convertToOneValutaOutput}} {{inputCurrency}}</div>
+    </mat-card>
+  </div>
+
+</mat-card>

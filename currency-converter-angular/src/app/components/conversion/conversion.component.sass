@@ -1,0 +1,80 @@
+@import "src/styles/colors"
+
+@mixin data
+  position: absolute
+  color: $gray-200
+
+.main
+  position: absolute
+  top: 20vh
+  left: 10vw
+  width: 80vw
+  height: 60vh
+
+  .title
+    font-size: 150%
+    text-align: center
+    color: $green
+
+.mat-card:not([class*=mat-elevation-z])
+  box-shadow: 0px 2px 1px -1px $green, 0px 1px 1px 0px $green, 0px 1px 3px 0px $green
+
+.converter
+  display: flex
+  width: 90%
+  height: 45%
+  margin: 6% 5%
+  justify-content: space-between
+
+.output-data, .input-data
+  width: 45%
+  display: flex
+  justify-content: space-between
+  align-items: center
+  .input
+    width: 65%
+    font-size: 180%
+  .select
+    width: 25%
+
+.origin
+  height: 32px
+  width: 32px
+
+::ng-deep .mat-option-text
+  display: flex !important
+  align-items: center !important
+  gap: 5px !important
+
+.mat-icon
+  color: $green
+
+.exange-button
+  position: absolute
+  width: 5%
+  height: 14%
+  top: 25vh
+  left: 39vw
+  border-radius: 50%
+  border: 1px solid $green
+  background-color: $gray-100
+  cursor: pointer
+  z-index: 1
+  &:hover
+    background-color: $white
+    transform: scale(1.03)
+    box-shadow: 0px 0px 20px $green
+  &:active
+    transform: scale(0.9)
+
+.have-phase
+  top: 4vh
+  left: 2vw
+  font-size: 150%
+  @include data
+
+.currency
+  top: 21vh
+  left: 2vw
+  font-size: 120%
+  @include data
