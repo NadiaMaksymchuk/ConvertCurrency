@@ -10,7 +10,7 @@ export class HttpService {
   private baseUrl: string = environment.apiUrl;
   private apiKey: string = environment.apiKey;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   get<T>(url: string): Observable<T> {
     return this.httpClient.get<T>(this.buildUrl(url)).pipe(catchError(this.handleError));

@@ -10,7 +10,7 @@ import { CurrencyService } from 'src/app/services/currency.service';
 })
 export class ConversionComponent implements OnInit {
   inputSumma: number = 0;
-  outputSumma:number = 0;
+  outputSumma: number = 0;
 
   convertToOneValutaInput: number = 0;
   convertToOneValutaOutput: number = 0;
@@ -21,21 +21,21 @@ export class ConversionComponent implements OnInit {
   constructor(
     private countriesService: CountriesTzLangProviderService,
     private currencyService: CurrencyService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.seedCurrency(this.inputCurrency, this.outputCurrency);
   }
 
   calculateSumma(event: any) {
-    if(this.validateNumericInput(event)) {
-        this.seedCurrency(this.inputCurrency, this.outputCurrency);
+    if (this.validateNumericInput(event)) {
+      this.seedCurrency(this.inputCurrency, this.outputCurrency);
     }
   }
 
   calculateSummaFromOutPut(event: any) {
-    if(this.validateNumericInput(event)) {
-        this.seedCurrencyOutput(this.inputCurrency, this.outputCurrency);
+    if (this.validateNumericInput(event)) {
+      this.seedCurrencyOutput(this.inputCurrency, this.outputCurrency);
     }
   }
 
@@ -56,7 +56,7 @@ export class ConversionComponent implements OnInit {
 
     const numericRegex = /^[0-9\u0000]*$/;
 
-    if (!numericRegex.test(inputChar)  && !allowedKeys.includes(event.key)) {
+    if (!numericRegex.test(inputChar) && !allowedKeys.includes(event.key)) {
       event.preventDefault();
       return false;
     }
@@ -72,34 +72,30 @@ export class ConversionComponent implements OnInit {
   private seedCurrency(input: string, output: string) {
 
     this.currencyService.getLatestCurrency(input)
-        .subscribe(response =>
-          {
-            this.convertToOneValutaInput = response.conversion_rates[output];
+      .subscribe(response => {
+        this.convertToOneValutaInput = response.conversion_rates[output];
 
-            this.outputSumma = this.currencyService.calculateCurrencyTotalSumma(this.convertToOneValutaInput, this.inputSumma);
-          });
+        this.outputSumma = this.currencyService.calculateCurrencyTotalSumma(this.convertToOneValutaInput, this.inputSumma);
+      });
 
     this.currencyService.getLatestCurrency(output)
-        .subscribe(response =>
-          {
-            this.convertToOneValutaOutput = response.conversion_rates[input];
-          });
+      .subscribe(response => {
+        this.convertToOneValutaOutput = response.conversion_rates[input];
+      });
   }
 
   private seedCurrencyOutput(input: string, output: string) {
     this.currencyService.getLatestCurrency(input)
-        .subscribe(response =>
-          {
-            this.convertToOneValutaInput = response.conversion_rates[output];
-          });
+      .subscribe(response => {
+        this.convertToOneValutaInput = response.conversion_rates[output];
+      });
 
     this.currencyService.getLatestCurrency(output)
-        .subscribe(response =>
-          {
-            this.convertToOneValutaOutput = response.conversion_rates[input];
+      .subscribe(response => {
+        this.convertToOneValutaOutput = response.conversion_rates[input];
 
-            this.inputSumma = this.currencyService.calculateCurrencyTotalSumma(this.convertToOneValutaOutput, this.outputSumma);
-          });
+        this.inputSumma = this.currencyService.calculateCurrencyTotalSumma(this.convertToOneValutaOutput, this.outputSumma);
+      });
   }
 
 }

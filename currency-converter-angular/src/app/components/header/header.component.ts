@@ -6,7 +6,7 @@ import { CurrencyService } from 'src/app/services/currency.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
   public USDCurrency: number = 0;
@@ -14,27 +14,27 @@ export class HeaderComponent implements OnInit {
 
   private readonly UAHString = 'UAH';
 
-  constructor(private currencyService: CurrencyService,
-    private countriesService: CountriesTzLangProviderService) { }
+  constructor(
+    private currencyService: CurrencyService,
+    private countriesService: CountriesTzLangProviderService
+  ) {}
 
   ngOnInit(): void {
     this.seedCurrency();
   }
 
-
   private seedCurrency() {
+    this.currencyService
+      .getLatestCurrency(CurrencyEnum.EUR)
+      .subscribe((response) => {
+        this.EURCurrency = response.conversion_rates[this.UAHString];
+      });
 
-    this.currencyService.getLatestCurrency(CurrencyEnum.EUR)
-        .subscribe(response =>
-          {
-            this.EURCurrency = response.conversion_rates[this.UAHString];
-          });
-
-    this.currencyService.getLatestCurrency(CurrencyEnum.USD)
-        .subscribe(response =>
-          {
-            this.USDCurrency = response.conversion_rates[this.UAHString];
-          });
+    this.currencyService
+      .getLatestCurrency(CurrencyEnum.USD)
+      .subscribe((response) => {
+        this.USDCurrency = response.conversion_rates[this.UAHString];
+      });
   }
 
   getFlag(county: string): string | undefined {
